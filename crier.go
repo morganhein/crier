@@ -70,6 +70,8 @@ func (c *Crier) start() {
 			for client, _ := range c.audience {
 				client.send(m)
 			}
+		case l := <-c.leave:
+			delete(c.audience, l)
 		}
 	}
 }
@@ -124,13 +126,9 @@ func (c *Crier) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	c.audience[l] = true
 	log.Println("Connected.")
 
-	for {
-		//sit here and wait
-		if true == <-left {
-			break
-		}
-	}
-	log.Println("End of ServeHTTP")
+	//sit here and wait
+	<-left
+	log.Print("End of ServeHTTP.")
 }
 
 type listener struct {
