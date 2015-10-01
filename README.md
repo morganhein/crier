@@ -19,3 +19,11 @@ Client Side:
 
 
 Much love taken from https://github.com/kljensen/golang-html5-sse-example/blob/master/server.go and https://godoc.org/github.com/donovanhide/eventsource
+
+TODO:
+
+*  Ability to resend previous event using the history
+*  Ability to send events to a specific client or group
+*  Auto-resend previous event if not successfully sent the first time
+*  Write test cases. I've **never** done this before, so this'll be fun
+*  Figure out how to allow importee code to have access to a list of clients
