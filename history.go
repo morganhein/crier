@@ -18,6 +18,7 @@ func (h *history) addBroadcast(message string) {
 	e := &event{
 		id: 		h.getNextEventId(),
 		command:	"broadcast",
+		message:	message,
 	}
 	h.history[e.id] = e
 }
@@ -27,6 +28,7 @@ func (h *history) addPublish(message, group string) {
 		id: 		h.getNextEventId(),
 		command:	"publish",
 		group:		group,
+		message:	message,
 	}
 	h.history[e.id] = e
 }
@@ -36,6 +38,7 @@ func (h *history) addWhisper(message string, l *listener) {
 		id: 		h.getNextEventId(),
 		command:	"whisper",
 		target:		l,
+		message:	message,
 	}
 	h.history[e.id] = e
 }
